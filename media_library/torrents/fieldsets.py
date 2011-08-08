@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from media_library.fieldsets import (
-    MEDIA_OBJECT_ADMIN_FIELDSETS, PHYSICAL_MEDIA_OBJECT_ADMIN_FIELDSETS)
+    PHYSICAL_MEDIA_OBJECT_ADMIN_FIELDSETS)
 
 
 TRACKER_ADMIN_FIELDSETS = (
@@ -11,7 +11,7 @@ TRACKER_ADMIN_FIELDSETS = (
             'fields':('user', 'passcode',),
             'classes':('collapse',),
             }),
-)#  + MEDIA_OBJECT_ADMIN_FIELDSETS
+)
 
 TORRENT_ADMIN_FIELDSETS = (
     (_(u'Torrent information'), {

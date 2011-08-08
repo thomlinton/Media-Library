@@ -9,8 +9,6 @@ class MediaObjectAdmin(admin.ModelAdmin):
     list_display = ('created_on',)
     list_filter = ('created_on',)
 
-    fieldsets = PHYSICAL_MEDIA_OBJECT_ADMIN_FIELDSETS
-
 class PhysicalMediaObjectAdmin(MediaObjectAdmin):
     list_display = ('path',) + MediaObjectAdmin.list_display
     list_display_links = ('path',)

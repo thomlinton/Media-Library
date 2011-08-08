@@ -1,4 +1,6 @@
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes import generic
 from django.conf import settings
 from django.db import models
 
@@ -16,7 +18,7 @@ class Tracker(MediaObject):
     is_private = models.BooleanField(_(u'is private'))
     user = models.CharField(_(u'user'), max_length=64, blank=True)
     passcode = models.CharField(_(u'passcode'), max_length=64, blank=True)
-    torrent_directory = PathField(_(u'torrent directory'), path=settings.TORRENT_PATH, recursive=True)
+    torrent_directory = PathField(_(u'torrent directory'), path=settings.TORRENT_PATH)
 
     class Meta:
         app_label = 'torrents'
@@ -34,3 +36,14 @@ class Torrent(PhysicalMediaObject):
 
     def __unicode__(self):
         return u'Torrent %s on tracker %s' % (self.path, self.tracker.name)
+
+class TorrentRegistry(models.Model):
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    media_object = generic.GenericForeignKey()
+    torrent = models.ForeignKey('torrents.Torrent')
+
+    class Meta:
+        app_label = 'torrents'
+        verbose_name = _(u'torrent registry')
+        unique_together = ('content_type', 'object_id', 'torrent')
