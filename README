@@ -1,0 +1,11 @@
+================
+Building (Draft)
+================
+
+Buildout
+--------
+
+Complete the standard steps to buildout-ify a project (assuming you are in the top-level directory)::
+
+  python bootstrap.py --distribute # setuptools is fer setupfoolz
+  ./bin/buildout -c development.cfg

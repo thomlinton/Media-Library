@@ -1,0 +1,78 @@
+{% load compress %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{% block title %} &ndash; Media Library{% endblock %}</title>
+    {% include "favicon.html" %}
+    {% block styles %}
+
+{% comment %}
+      {% compress css %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/print.css" type="text/css" media="print">
+        <!--[if lt IE 8]>
+	  <link rel="stylesheet" href="{{ STATIC_URL }}blueprint/css/ie.css" type="text/css" media="screen, projection">
+	<![endif]-->
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/site.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/forms.css" type="text/css" media="screen, projection">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui/aristo/jquery-ui.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.multiselect.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.multiselect.filter.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.ui.timepicker.css" type="text/css" media="screen, projection">
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/overrides.css" type="text/css" media="screen, projection">
+      {% endcompress %}
+{% endcomment %}
+
+    {% endblock styles %}
+    {% block head_extra %}{% endblock %}
+{#    {% include "js/tracking.html" %} #}
+  </head>
+  <body>
+    {% block body %}
+      <div id="container" class="container">
+        <div id="header" class="column span-24">
+    	  {% block header %}{% include "header.html" %}{% endblock header %}
+       </div>
+	<div id="content" class="column span-24 last">
+	  {% block content_container %}
+          {% endblock content_container %}
+	</div>
+	<div id="footer" class="column span-24">
+	  {% block footer %}{% include "footer.html" %}{% endblock footer %}
+	</div>
+      </div>
+    {% endblock body %}
+
+    {% block scripts %}
+
+{% comment %}
+      {% compress js %}
+        <!--[if lt IE 8]>
+          <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript"></script>
+        <![endif]-->
+
+        <script type="text/javascript" src="{{ STATIC_URL }}js/modernizr.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/cssua.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/placeholder.js" charset="utf-8"></script>
+	  
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ui.timepicker.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.multiselect.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.multiselect.filter.min.js" charset="utf-8"></script>
+
+        {% include "js/ui-init.html" %}
+      {% endcompress %}
+{% endcomment %}
+
+    {% endblock scripts %}
+    {% block script_extra %}{% endblock script_extra %}
+    {% block form_media %}{% endblock form_media %}
+  </body>
+</html>

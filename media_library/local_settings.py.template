@@ -1,0 +1,51 @@
+# Notification settings
+ADMINS = (('Admin','admin@email.com'),)
+MANAGERS = (('Manager, 'manager@email.com'),)
+
+# Environment-specific database settings
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'OPTIONS': {},
+ 
+        'NAME': '/tmp/media_library.sqlite3',
+        'HOST': '',
+        'PORT': '',
+        'USER': '',
+        'PASSWORD': '',
+
+        'TEST_NAME': '',
+        'TEST_CHARSET': '',
+        'TEST_COLLATION': '',
+        'TEST_MIRROR': '',
+    }
+}
+
+# Environment-specific cache settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        'LOCATION': '127.0.0.1:11211',
+        }
+    }
+
+# Environment-specific email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'stmp.host.tld'
+EMAIL_USER = 'user'
+EMAIL_PASSWORD = 'password'
+
+# Haystack settings
+HAYSTACK_SEARCH_ENGINE = ''
+HAYSTACK_WHOOSH_PATH = ''
+
+# Rabbitmq settings
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_VHOST = "/"
+BROKER_USER = "guest"
+BROKER_PASSWORD = "guest"
+
+# Media Library settings
+MEDIA_LIBRARY_PATH = ''
+TORRENT_PATH = ''

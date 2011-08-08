@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Not Found" %}{% endblock %}
+{% block content %}
+  <h2>{% trans "Not Found" %}</h2>
+  <p>{% blocktrans %}The resource at {{ request_path }} could not be found.{% endblocktrans %}</p>
+{% endblock %}
